@@ -3,9 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Riley — IT Technician</title>
+  <title>Riley Hinkson — Infrastructure Engineer</title>
 
-  <meta name="description" content= "Studying cybersecuity and obtaining certifications throught CompTia and Cisco" />
+  <meta name="description" content="Datacenter technician specializing in enterprise networking, Linux systems, and infrastructure. CompTIA A+ certified, pursuing Network+, Security+, CCNA, and Linux+." />
+  
+  <!-- Open Graph for social sharing -->
+  <meta property="og:title" content="Riley Hinkson — Infrastructure Engineer" />
+  <meta property="og:description" content="From wildland firefighter to datacenter technician. Building enterprise infrastructure one rack at a time." />
+  <meta property="og:type" content="website" />
 
   <style>
     :root {
@@ -13,57 +18,98 @@
       --fg: #e6e6e6;
       --muted: #a0a4ad;
       --accent: #4da3ff;
+      --accent-hover: #6bb5ff;
       --card: #161922;
       --border: #2a2f3a;
+      --success: #50c878;
+      --warning: #ffa500;
       --max-width: 900px;
       --radius: 8px;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     }
 
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background: var(--bg);
       color: var(--fg);
       line-height: 1.6;
+      scroll-behavior: smooth;
     }
 
     header {
       border-bottom: 1px solid var(--border);
       background: var(--card);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow);
     }
 
     nav {
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 1rem;
+      padding: 1rem 1.5rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
     }
 
     nav a {
       color: var(--fg);
       text-decoration: none;
-      margin-left: 1rem;
       font-weight: 500;
+      transition: color 0.2s ease;
+      position: relative;
     }
 
     nav a:hover {
       color: var(--accent);
     }
 
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
     main {
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 2rem 1rem;
+      padding: 2rem 1.5rem;
     }
 
     section {
-      margin-bottom: 3rem;
+      margin-bottom: 4rem;
     }
 
     h1, h2, h3 {
@@ -71,53 +117,373 @@
     }
 
     h1 {
-      font-size: 2.2rem;
+      font-size: 2.5rem;
       margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, var(--fg) 0%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     h2 {
-      margin-bottom: 0.75rem;
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 0.5rem;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+      color: var(--fg);
     }
 
     p {
       color: var(--muted);
       max-width: 70ch;
+      margin-bottom: 1rem;
+    }
+
+    .hero {
+      padding: 3rem 0;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero .subtitle {
+      font-size: 1.25rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .hero .description {
+      font-size: 1.1rem;
+      max-width: 65ch;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--bg);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(77, 163, 255, 0.3);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .btn-secondary:hover {
+      background: var(--accent);
+      color: var(--bg);
+      transform: translateY(-2px);
     }
 
     .card {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      border-color: var(--accent);
+      box-shadow: var(--shadow);
+      transform: translateY(-4px);
+    }
+
+    .card h3 {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-right: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .badge-success {
+      background: rgba(80, 200, 120, 0.2);
+      color: var(--success);
+      border: 1px solid var(--success);
+    }
+
+    .badge-warning {
+      background: rgba(255, 165, 0, 0.2);
+      color: var(--warning);
+      border: 1px solid var(--warning);
+    }
+
+    .badge-info {
+      background: rgba(77, 163, 255, 0.2);
+      color: var(--accent);
+      border: 1px solid var(--accent);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .skill-category {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
       padding: 1.25rem;
-      margin-bottom: 1rem;
+    }
+
+    .skill-category h4 {
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+      font-size: 1.1rem;
+    }
+
+    .skill-category ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .skill-category li {
+      padding: 0.4rem 0;
+      color: var(--muted);
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    .skill-category li::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+      margin-top: 2rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--border);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2rem;
+      padding-left: 2rem;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2.5rem;
+      top: 0.5rem;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 3px solid var(--bg);
+    }
+
+    .timeline-item.active::before {
+      background: var(--success);
+      box-shadow: 0 0 0 4px rgba(80, 200, 120, 0.3);
+    }
+
+    .timeline-date {
+      font-size: 0.9rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 0.25rem;
     }
 
     ul {
-      padding-left: 1.2rem;
+      padding-left: 1.5rem;
+      margin: 0.5rem 0;
+    }
+
+    ul li {
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .tech-tag {
+      background: rgba(77, 163, 255, 0.1);
+      color: var(--accent);
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      border: 1px solid rgba(77, 163, 255, 0.3);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .stat-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 0.25rem;
+    }
+
+    .stat-label {
+      color: var(--muted);
+      font-size: 0.95rem;
     }
 
     footer {
       border-top: 1px solid var(--border);
-      padding: 1.5rem 1rem;
+      padding: 2rem 1.5rem;
       text-align: center;
       color: var(--muted);
       font-size: 0.9rem;
+      background: var(--card);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent-hover);
     }
 
     .accent {
       color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    /* Scroll progress bar */
+    #scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: var(--accent);
+      width: 0%;
+      z-index: 1000;
+      transition: width 0.1s ease;
     }
   </style>
 </head>
 
 <body>
 
+<div id="scroll-progress"></div>
+
 <header>
   <nav>
-    <strong>Riley</strong>
-    <div>
-      <a href="#services">Services</a>
+    <a href="#" class="logo">Riley Hinkson</a>
+    <div class="nav-links">
+      <a href="#about">About</a>
       <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#certifications">Certifications</a>
       <a href="#contact">Contact</a>
     </div>
   </nav>
@@ -126,13 +492,63 @@
 <main>
 
   <!-- HERO -->
-  <section>
-    <h1>IT Technician — Linux-First Systems</h1>
-    <p>
-      I build, repair, and maintain reliable computer systems using
-      repairable hardware and clear documentation.
-      Linux by preference, Windows when required.
+  <section class="hero">
+    <h1>Riley Hinkson</h1>
+    <p class="subtitle">Computer & IT Technician</p>
+    <p class="description">
+      From wildland firefighter to datacenter technician.
+      Building enterprise infrastructure one rack at a time.
+      <br><br>
+      Specializing in enterprise networking, Linux systems administration, 
+      and datacenter technologies.
     </p>
+    
+    <div class="stats">
+      <div class="stat-card">
+        <div class="stat-number">20+</div>
+        <div class="stat-label">Lab Devices</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">1</div>
+        <div class="stat-label">Year in IT</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">5</div>
+        <div class="stat-label">Certs Planned</div>
+      </div>
+    </div>
+
+    <div class="cta-buttons">
+      <a href="#projects" class="btn btn-primary">View Projects</a>
+      <a href="mailto:rileyhinkson@gmail.com" class="btn btn-secondary">Get in Touch</a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <h2>About Me</h2>
+    <div class="card">
+      <p>
+        I'm a 25-year-old infrastructure technician based in Pittsburgh, PA, 
+        specializing in datacenter technologies, enterprise networking, and 
+        Linux systems administration.
+      </p>
+      <p>
+        After four years fighting wildfires in Lake Tahoe (2020-2024), I 
+        transitioned to IT infrastructure in early 2025. In just 12 months, I've:
+      </p>
+      <ul>
+        <li>Earned CompTIA A+ certification</li>
+        <li>Built a 20-device enterprise home laboratory</li>
+        <li>Started freelance PC repair business</li>
+        <li>Deployed multi-VLAN network infrastructure</li>
+        <li>Currently studying for Network+, Security+, CCNA, and Linux+</li>
+      </ul>
+      <p>
+        <strong>My goal:</strong> Become a datacenter engineer who can design, 
+        deploy, and troubleshoot entire infrastructure environments.
+      </p>
+    </div>
   </section>
 
   <!-- SERVICES -->
@@ -140,53 +556,334 @@
     <h2>What I Do</h2>
 
     <div class="card">
+      <h3>Computer Repair & Diagnostics</h3>
       <ul>
-        <li>Computer reapir and disgnostics</li>
-        <li>Hardware diagnostics, upgrades, and repairs</li>
-        <li>Router & firewall builds (OPNsense)</li>
-        <li>Small network segmentation & VLANs</li>
-        <li>Virtualization labs & VM environments</li>
-        <li>Data recovery & system migration</li>
+        <li>Hardware diagnostics, upgrades, and component replacement</li>
+        <li>OS installation and configuration (Windows, Linux, dual-boot)</li>
+        <li>Data recovery and system migration</li>
+        <li>Performance optimization and troubleshooting</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Network Infrastructure</h3>
+      <ul>
+        <li>Router & firewall deployment (OpenSense/pfSense)</li>
+        <li>Network segmentation and VLAN configuration</li>
+        <li>Cisco switch configuration (IOS, trunking, STP)</li>
+        <li>VPN setup (Tailscale, OpenVPN)</li>
+        <li>Network monitoring and troubleshooting</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Server & Virtualization</h3>
+      <ul>
+        <li>Linux server administration (Debian, Ubuntu, TrueNAS)</li>
+        <li>Virtualization environments (Proxmox VE, VMware concepts)</li>
+        <li>Storage configuration (RAID, ZFS, NAS/SAN)</li>
+        <li>Remote management (iDRAC, IPMI, SSH)</li>
       </ul>
     </div>
   </section>
 
   <!-- PROJECTS -->
   <section id="projects">
-    <h2>Selected Projects</h2>
+    <h2>Technical Projects</h2>
 
     <div class="card">
-      <h3>Personal Infrastructure Lab — "Iron Gate"</h3>
+      <h3>Project IronGate — Enterprise Home Laboratory</h3>
       <p>
-        A secure, segmented network environment designed 
-        to learn and practice foundational cybersecurity concepts.</p>
+        A production-grade home laboratory built to develop datacenter and 
+        network engineering skills, featuring enterprise-class hardware and 
+        professional network architecture.
+      </p>
+      
+      <h4 style="color: var(--accent); margin-top: 1.5rem;">Infrastructure Components:</h4>
+      <ul>
+        <li><strong>Dell PowerEdge R710</strong> — Rack-mount server (iDRAC management, VM hosting)</li>
+        <li><strong>Cisco Catalyst 2960X</strong> — 48-port managed switch (VLAN config, trunking)</li>
+        <li><strong>Lenovo ThinkStation P700</strong> — Dual-Xeon workstation (high-performance compute)</li>
+        <li><strong>OpenSense Router</strong> — Firewall/gateway (pfSense-based, VPN, IDS)</li>
+        <li><strong>TrueNAS Storage</strong> — 6x 1TB RAIDZ2 array (ZFS, network shares)</li>
+        <li><strong>2x Dell Wyse 5070</strong> — Thin clients (network monitoring sensors)</li>
+        <li><strong>Minisforum Ryzen 9</strong> — Mini PC (64GB DDR5, planned Proxmox cluster)</li>
+      </ul>
+
+      <h4 style="color: var(--accent); margin-top: 1.5rem;">Network Architecture:</h4>
+      <ul>
+        <li>Multi-VLAN segmentation (Management, Production, Storage, IoT, DMZ)</li>
+        <li>Inter-VLAN routing with firewall policy enforcement</li>
+        <li>Isolated IoT network with dedicated WiFi 6 router</li>
+        <li>Tailscale mesh VPN for secure remote access</li>
+        <li>SPAN port configuration for traffic analysis</li>
+      </ul>
+
+      <h4 style="color: var(--accent); margin-top: 1.5rem;">Skills Demonstrated:</h4>
+      <div class="tech-stack">
+        <span class="tech-tag">Cisco IOS</span>
+        <span class="tech-tag">VLANs</span>
+        <span class="tech-tag">Routing</span>
+        <span class="tech-tag">Linux Admin</span>
+        <span class="tech-tag">ZFS/RAID</span>
+        <span class="tech-tag">Virtualization</span>
+        <span class="tech-tag">Network Security</span>
+        <span class="tech-tag">iDRAC/IPMI</span>
+      </div>
     </div>
 
     <div class="card">
-      <h3>ThinkPad T480 Multi-OS Build</h3>
+      <h3>Network Monitoring & Security Implementation</h3>
       <p>
-        Linux Mint daily driver, Windows 11 compliance environment,
-        and dedicated storage for VM workloads.
+        Deployed network monitoring and intrusion detection system across 
+        home laboratory infrastructure for real-time threat visibility.
+      </p>
+      <ul>
+        <li>Suricata IDS deployment on Dell Wyse sensors</li>
+        <li>SPAN port mirroring configuration on Cisco switch</li>
+        <li>Log aggregation and central SIEM (planned)</li>
+        <li>Security monitoring dashboards (Grafana + InfluxDB)</li>
+      </ul>
+      <div class="tech-stack">
+        <span class="tech-tag">Suricata IDS</span>
+        <span class="tech-tag">SPAN Ports</span>
+        <span class="tech-tag">Log Analysis</span>
+        <span class="tech-tag">Grafana</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>ThinkPad T480 Multi-OS Deployment</h3>
+      <p>
+        Configured multi-boot laptop for development, security testing, and 
+        daily productivity workflows.
+      </p>
+      <ul>
+        <li>Linux Mint — Primary OS for daily work and development</li>
+        <li>Windows 11 — Compliance testing and client compatibility</li>
+        <li>Dedicated storage partition for VM workloads</li>
+      </ul>
+      <div class="tech-stack">
+        <span class="tech-tag">Linux Mint</span>
+        <span class="tech-tag">Windows 11</span>
+        <span class="tech-tag">Dual-Boot</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <h2>Technical Skills</h2>
+
+    <div class="skills-grid">
+      <div class="skill-category">
+        <h4>Hardware & Infrastructure</h4>
+        <ul>
+          <li>Server platforms (Dell, Lenovo, HP)</li>
+          <li>Remote management (iDRAC, IPMI)</li>
+          <li>RAID configuration (0/1/5/6/10, RAIDZ2)</li>
+          <li>Storage (NAS/SAN, iSCSI, NFS, SMB)</li>
+          <li>Cable management & racking</li>
+        </ul>
+      </div>
+
+      <div class="skill-category">
+        <h4>Networking</h4>
+        <ul>
+          <li>Cisco IOS configuration</li>
+          <li>VLAN design & implementation</li>
+          <li>Routing (static, inter-VLAN)</li>
+          <li>Switching (L2/L3, trunking, STP)</li>
+          <li>Firewall management (OpenSense)</li>
+          <li>VPN (Tailscale, OpenVPN)</li>
+        </ul>
+      </div>
+
+      <div class="skill-category">
+        <h4>Operating Systems</h4>
+        <ul>
+          <li>Linux (Debian, Ubuntu, Mint)</li>
+          <li>TrueNAS/FreeBSD</li>
+          <li>Windows 10/11/Server</li>
+          <li>Virtualization (Proxmox VE)</li>
+          <li>Command line/shell</li>
+        </ul>
+      </div>
+
+      <div class="skill-category">
+        <h4>Security & Monitoring</h4>
+        <ul>
+          <li>Network segmentation</li>
+          <li>IDS/IPS (Suricata)</li>
+          <li>Firewall rules & policies</li>
+          <li>SNMP monitoring</li>
+          <li>Log aggregation</li>
+        </ul>
+      </div>
+
+      <div class="skill-category">
+        <h4>Tools & Technologies</h4>
+        <ul>
+          <li>SSH, RDP, VNC</li>
+          <li>Git & GitHub</li>
+          <li>Bash scripting</li>
+          <li>Documentation & diagramming</li>
+          <li>Network troubleshooting</li>
+        </ul>
+      </div>
+
+      <div class="skill-category">
+        <h4>In Progress</h4>
+        <ul>
+          <li>Ansible automation</li>
+          <li>Python scripting</li>
+          <li>Advanced routing (OSPF, BGP)</li>
+          <li>Container orchestration</li>
+          <li>SIEM deployment</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certifications">
+    <h2>Certifications & Learning Path</h2>
+
+    <div class="timeline">
+      <div class="timeline-item active">
+        <div class="timeline-date">June 2025</div>
+        <h3>CompTIA A+ <span class="badge badge-success">Certified</span></h3>
+        <p>
+          Core 1 (220-1101): Hardware, networking, mobile devices, troubleshooting<br>
+          Core 2 (220-1102): Operating systems, security, software troubleshooting
+        </p>
+      </div>
+
+      <div class="timeline-item active">
+        <div class="timeline-date">April 2026 (Scheduled)</div>
+        <h3>CompTIA Network+ <span class="badge badge-warning">In Progress</span></h3>
+        <p>
+          Network infrastructure, operations, security, troubleshooting<br>
+          <strong>Study Progress:</strong> 60% complete
+        </p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">June 2026 (Planned)</div>
+        <h3>CompTIA Security+ <span class="badge badge-info">Planned</span></h3>
+        <p>
+          Security fundamentals, risk management, cryptography, incident response
+        </p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">September 2026 (Planned)</div>
+        <h3>CompTIA Linux+ <span class="badge badge-info">Planned</span></h3>
+        <p>
+          Linux administration, scripting, security, troubleshooting
+        </p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">March 2027 (Planned)</div>
+        <h3>Cisco CCNA <span class="badge badge-info">Planned</span></h3>
+        <p>
+          Enterprise networking, routing/switching, network automation
+        </p>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top: 2rem;">
+      <h3>Career Trajectory</h3>
+      <p>
+        <strong>2025:</strong> Foundation (A+, homelab start, PC repair business)<br>
+        <strong>2026:</strong> Core skills (Network+, Security+, Linux+, advanced homelab)<br>
+        <strong>2027:</strong> Enterprise networking (CCNA, first datacenter role)<br>
+        <strong>2028+:</strong> Specialization (CCNP, RHCE, or cloud certifications)
+      </p>
+      <p>
+        <strong>Ultimate Goal:</strong> Datacenter infrastructure engineer capable of 
+        designing, deploying, and managing complete datacenter environments.
       </p>
     </div>
   </section>
 
   <!-- CONTACT -->
   <section id="contact">
-    <h2>Contact</h2>
-    <p>
-      Email is the best way to reach me.
-    </p>
-    <p class="accent">
-      rileyhinkson@gmail.com
-    </p>
+    <h2>Get in Touch</h2>
+    <div class="card">
+      <p>
+        I'm currently seeking datacenter technician or junior network engineer 
+        opportunities in the Pittsburgh area (or remote).
+      </p>
+      
+      <h3 style="margin-top: 1.5rem;">What I'm Looking For:</h3>
+      <ul>
+        <li>Datacenter technician roles</li>
+        <li>Junior network engineer positions</li>
+        <li>Infrastructure support opportunities</li>
+        <li>Mentorship from experienced engineers</li>
+      </ul>
+
+      <h3 style="margin-top: 1.5rem;">What I Bring:</h3>
+      <ul>
+        <li>CompTIA A+ certified, pursuing Network+/Security+/CCNA/Linux+</li>
+        <li>Hands-on experience with enterprise hardware (Dell, Cisco, Lenovo)</li>
+        <li>Self-directed learner with 20-device home laboratory</li>
+        <li>Crisis management background (wildland firefighting)</li>
+        <li>Strong troubleshooting and documentation skills</li>
+      </ul>
+
+      <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+        <h3>Contact Information:</h3>
+        <p style="font-size: 1.1rem;">
+          Email: <a href="mailto:rileyhinkson@gmail.com" class="accent">rileyhinkson@gmail.com</a><br>
+          GitHub: <a href="https://github.com/rileyhinkson" class="accent">github.com/rileyhinkson</a>
+        </p>
+        <p style="color: var(--muted); font-size: 0.95rem; margin-top: 1rem;">
+          Email is the best way to reach me. I typically respond within 24 hours.
+        </p>
+      </div>
+    </div>
   </section>
 
 </main>
 
 <footer>
-  © 2026 Riley · Built with static HTML on GitHub Pages
+  <div class="footer-links">
+    <a href="mailto:rileyhinkson@gmail.com">Email</a>
+    <a href="https://github.com/rileyhinkson" target="_blank">GitHub</a>
+    <a href="#top">Back to Top</a>
+  </div>
+  <p>
+    © 2026 Riley Hinkson · Infrastructure Engineer<br>
+    Built with static HTML on GitHub Pages
+  </p>
 </footer>
+
+<script>
+  // Scroll progress bar
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrollPercent = (scrollTop / scrollHeight) * 100;
+    document.getElementById('scroll-progress').style.width = scrollPercent + '%';
+  });
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+</script>
 
 </body>
 </html>
