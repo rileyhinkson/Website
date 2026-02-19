@@ -334,6 +334,11 @@
       box-shadow: 0 0 0 4px rgba(80, 200, 120, 0.3);
     }
 
+    .timeline-item.in-progress::before {
+      background: var(--warning);
+      box-shadow: 0 0 0 4px rgba(255, 165, 0, 0.3);
+    }
+
     .timeline-date {
       font-size: 0.9rem;
       color: var(--accent);
@@ -569,7 +574,7 @@
     <div class="card">
       <h3>Network Infrastructure (Home Lab)</h3>
       <ul>
-        <li>Router & firewall setup (OpenSense/pfSense)</li>
+        <li>Router & firewall setup (OPNsense/pfSense)</li>
         <li>Basic VLAN configuration & network segmentation</li>
         <li>Cisco switch configuration (IOS, trunking)</li>
         <li>VPN setup (Tailscale, OpenVPN)</li>
@@ -604,7 +609,7 @@
         <li><strong>Dell PowerEdge R710</strong> — Rack-mount server (VM hosting)</li>
         <li><strong>Cisco Catalyst 2960X</strong> — 48-port managed switch (VLAN config, trunking)</li>
         <li><strong>Lenovo ThinkStation P700</strong> — Dual-Xeon workstation (high-performance compute)</li>
-        <li><strong>OpenSense Router</strong> — Firewall/gateway (pfSense-based, VPN)</li>
+        <li><strong>OPNsense Router</strong> — Firewall/gateway (pfSense-based, VPN)</li>
         <li><strong>TrueNAS Storage</strong> — 6x 1TB RAIDZ2 array (ZFS, network shares)</li>
         <li><strong>2x Dell Wyse 5070</strong> — Thin clients (network monitoring sensors)</li>
         <li><strong>Minisforum Ryzen 9</strong> — Mini PC (64GB DDR5, planned Proxmox cluster)</li>
@@ -693,7 +698,7 @@
           <li>VLAN integration</li>
           <li>Routing (static, inter-VLAN)</li>
           <li>Switching (L2/L3)</li>
-          <li>Firewall management (OpenSense & Consumer Routers)</li>
+          <li>Firewall management (OPNsense & Consumer Routers)</li>
           <li>VPN (Tailscale, OpenVPN)</li>
         </ul>
       </div>
@@ -759,7 +764,7 @@
         <a href="https://www.credly.com/badges/1be2a90d-982c-4244-9e49-1d41890a3b37/email" target="_blank" class="btn btn-secondary" style="margin-top: 0.75rem; padding: 0.5rem 1rem; font-size: 0.9rem;">Verify on Credly</a>
       </div>
 
-      <div class="timeline-item active">
+      <div class="timeline-item in-progress">
         <div class="timeline-date">April 2026 (Scheduled)</div>
         <h3>CompTIA Network+ <span class="badge badge-warning">In Progress</span></h3>
         <p>
